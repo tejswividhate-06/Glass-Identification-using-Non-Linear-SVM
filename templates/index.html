@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Identification | Non-Linear SVM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="icon">◈</div>
+            <h1>Glass Identification</h1>
+            <p>Non-Linear Support Vector Machine Classifier</p>
+        </header>
+
+        <section class="info">
+            <h2>Predict Glass Type</h2>
+            <p>Enter the nine chemical measurements below to classify a glass sample.</p>
+        </section>
+
+        {% if error %}
+        <div class="result error">
+            <strong>Error</strong>
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+    
+
+        <form method="POST" action="/">
+            <div class="grid">
+                <div class="field">
+                    <label for="RI">Refractive Index (RI)</label>
+                    <input type="number" step="any" name="RI" id="RI" placeholder="e.g. 1.521" required>
+                </div>
+
+                <div class="field">
+                    <label for="Na">Sodium (Na)</label>
+                    <input type="number" step="any" name="Na" id="Na" placeholder="e.g. 13.64" required>
+                </div>
+
+                <div class="field">
+                    <label for="Mg">Magnesium (Mg)</label>
+                    <input type="number" step="any" name="Mg" id="Mg" placeholder="e.g. 4.49" required>
+                </div>
+
+                <div class="field">
+                    <label for="Al">Aluminium (Al)</label>
+                    <input type="number" step="any" name="Al" id="Al" placeholder="e.g. 1.10" required>
+                </div>
+
+                <div class="field">
+                    <label for="Si">Silicon (Si)</label>
+                    <input type="number" step="any" name="Si" id="Si" placeholder="e.g. 72.50" required>
+                </div>
+
+                <div class="field">
+                    <label for="K">Potassium (K)</label>
+                    <input type="number" step="any" name="K" id="K" placeholder="e.g. 0.06" required>
+                </div>
+
+                <div class="field">
+                    <label for="Ca">Calcium (Ca)</label>
+                    <input type="number" step="any" name="Ca" id="Ca" placeholder="e.g. 8.75" required>
+                </div>
+
+                <div class="field">
+                    <label for="Ba">Barium (Ba)</label>
+                    <input type="number" step="any" name="Ba" id="Ba" placeholder="e.g. 0.00" required>
+                </div>
+
+                <div class="field">
+                    <label for="Fe">Iron (Fe)</label>
+                    <input type="number" step="any" name="Fe" id="Fe" placeholder="e.g. 0.00" required>
+                </div>
+            </div>
+
+            <button type="submit">Predict Glass Type →</button>
+            <button type="reset" class="reset">Clear Measurements</button>
+        </form>
+        
+
+        {% if prediction %}
+        <div class="result success">
+            <span>Prediction Result</span>
+            <h2>{{ prediction }}</h2>
+            <p>Predicted using the trained RBF kernel SVM model.</p>
+        </div>
+        {% endif %}
+
+
+        <footer>
+            <p>Developed by Tejswi Vidhate</p>
+            <p>Educational machine learning project</p>
+        </footer>
+    </div>
+
+</body>
+</html>
